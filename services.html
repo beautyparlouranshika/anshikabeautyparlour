@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Our Services | Anshika Beauty Parlour | Mithaura Bazar, Maharajganj</title>
+<meta name="description" content="Explore all beauty services at Anshika Beauty Parlour — Bridal Makeup, Facial, Waxing, Hairstyling, Manicure, Airbrush Makeup and more in Mithaura Bazar, Maharajganj UP."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+:root{
+  --rose:#c2185b;--rose-light:#f8bbd9;--rose-dark:#880e4f;
+  --gold:#d4a843;--gold-light:#f5e6c0;--cream:#fdf6f0;
+  --white:#ffffff;--text:#1a1a2e;--text-muted:#6b6b80;
+  --card-bg:#ffffff;--border:#f0e6ef;
+  --shadow:0 4px 24px rgba(194,24,91,0.10);--shadow-lg:0 8px 48px rgba(194,24,91,0.16);
+  --radius:16px;--radius-lg:24px;
+  --ff-display:'Cormorant Garamond',serif;--ff-body:'Poppins',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff-body);background:var(--cream);color:var(--text);overflow-x:hidden}
+
+/* HEADER */
+header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+header.scrolled{box-shadow:var(--shadow)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:12px 20px;gap:12px}
+.logo-wrap{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-wrap img{height:44px;width:44px;object-fit:contain;border-radius:50%;border:2px solid var(--rose-light)}
+.brand-name{font-family:var(--ff-display);font-size:.95rem;font-weight:700;color:var(--rose-dark);line-height:1.2;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media(min-width:400px){.brand-name{font-size:1.05rem;max-width:180px}}
+@media(min-width:600px){.brand-name{font-size:1.15rem;max-width:none}}
+.header-actions{display:flex;align-items:center;gap:8px}
+.lang-toggle{background:var(--gold-light);color:var(--rose-dark);border:none;border-radius:20px;padding:5px 10px;font-size:.72rem;font-weight:600;cursor:pointer;font-family:var(--ff-body);transition:all .2s;letter-spacing:.5px;flex-shrink:0}
+.lang-toggle:hover{background:var(--rose-light)}
+.icon-btn{position:relative;background:none;border:none;cursor:pointer;color:var(--rose-dark);font-size:1.2rem;padding:6px;transition:color .2s}
+.icon-btn:hover{color:var(--rose)}
+.cart-badge{position:absolute;top:-2px;right:-2px;background:var(--rose);color:#fff;font-size:.6rem;font-weight:700;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center}
+.hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;height:2px;width:22px;background:var(--rose-dark);border-radius:2px;transition:all .3s}
+.hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* SIDE MENU */
+.side-menu{position:fixed;top:0;right:-320px;width:300px;height:100%;background:#fff;z-index:2000;box-shadow:-8px 0 40px rgba(0,0,0,0.15);transition:right .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;padding:80px 32px 32px}
+.side-menu.open{right:0}
+.side-menu nav{display:flex;flex-direction:column;gap:4px}
+.side-menu nav a{font-family:var(--ff-display);font-size:1.6rem;font-weight:600;color:var(--text);text-decoration:none;padding:10px 0;border-bottom:1px solid var(--border);transition:color .2s,padding-left .2s}
+.side-menu nav a:hover{color:var(--rose);padding-left:8px}
+.side-menu .close-btn{position:absolute;top:20px;right:20px;background:var(--rose-light);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;color:var(--rose-dark);display:flex;align-items:center;justify-content:center}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1500;opacity:0;pointer-events:none;transition:opacity .35s}
+.overlay.show{opacity:1;pointer-events:all}
+
+/* CART PANEL */
+.booking-panel{position:fixed;top:-100%;left:0;right:0;z-index:3000;background:#fff;border-radius:0 0 var(--radius-lg) var(--radius-lg);box-shadow:0 8px 48px rgba(0,0,0,.18);max-width:520px;margin:0 auto;height:50vh;display:flex;flex-direction:column;transition:top .4s cubic-bezier(.4,0,.2,1)}
+.booking-panel.open{top:0}
+.panel-header{padding:20px 20px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;background:linear-gradient(135deg,var(--rose-dark),#5c0a3e)}
+.panel-header-left h3{font-family:var(--ff-display);font-size:1.3rem;color:#fff;margin-bottom:2px}
+.panel-header-left p{font-size:.75rem;color:rgba(255,255,255,.7)}
+.booking-close{background:rgba(255,255,255,.2);border:none;border-radius:50%;width:32px;height:32px;cursor:pointer;color:#fff;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.bookings-section{flex:1;overflow-y:auto;padding:12px 20px 16px}
+.bookings-label{font-size:.7rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px}
+.booking-item{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--cream);border-radius:10px;margin-bottom:8px;border:1px solid var(--border)}
+.booking-item-left{display:flex;flex-direction:column;gap:2px}
+.booking-item-service{font-weight:600;font-size:.85rem;color:var(--rose-dark)}
+.booking-item-time{font-size:.72rem;color:var(--text-muted)}
+.booking-item-badge{background:var(--rose-light);color:var(--rose-dark);border-radius:12px;padding:3px 10px;font-size:.7rem;font-weight:600}
+.no-bookings{text-align:center;padding:24px 0;color:var(--text-muted);font-size:.85rem}
+.no-bookings i{font-size:1.8rem;color:var(--rose-light);display:block;margin-bottom:8px}
+
+/* HERO */
+.services-hero{
+  min-height:50vh;padding:110px 20px 60px;
+  background:linear-gradient(135deg,#fff0f5 0%,#fdf6f0 40%,#fff8f0 100%);
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+}
+.services-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(194,24,91,.06),transparent);pointer-events:none}
+.hero-petals{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.petal{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--rose-light);opacity:.5;animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0deg);opacity:.5}50%{transform:translateY(-20px) rotate(180deg);opacity:.8}}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--rose-light);color:var(--rose-dark);border-radius:30px;padding:6px 16px;font-size:.75rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:16px;animation:fadeUp .6s .1s both}
+.services-hero h1{font-family:var(--ff-display);font-size:clamp(2rem,7vw,3.5rem);font-weight:700;color:var(--rose-dark);line-height:1.15;margin-bottom:12px;animation:fadeUp .6s .2s both}
+.services-hero p{font-size:clamp(.9rem,2.5vw,1.1rem);color:var(--text-muted);max-width:500px;margin:0 auto 32px;line-height:1.8;animation:fadeUp .6s .3s both}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:40px;font-weight:600;font-size:.9rem;cursor:pointer;transition:all .25s;text-decoration:none;border:none;font-family:var(--ff-body)}
+.btn-primary{background:var(--rose);color:#fff;box-shadow:0 4px 20px rgba(194,24,91,.3)}
+.btn-primary:hover{background:var(--rose-dark);transform:translateY(-2px)}
+
+/* SECTIONS */
+section{padding:60px 20px}
+.section-label{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--rose);background:var(--rose-light);border-radius:20px;padding:4px 14px;margin-bottom:12px}
+.section-title{font-family:var(--ff-display);font-size:clamp(1.8rem,5vw,2.8rem);font-weight:700;color:var(--rose-dark);margin-bottom:8px}
+.section-sub{font-size:.95rem;color:var(--text-muted);max-width:500px;line-height:1.7}
+.section-header{margin-bottom:40px}
+.container{max-width:1200px;margin:0 auto}
+
+/* SERVICES GRID */
+.services-section{background:var(--cream)}
+.services-grid{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:600px){.services-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:900px){.services-grid{grid-template-columns:1fr 1fr 1fr}}
+.service-card{background:#fff;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--border);display:flex;flex-direction:column;cursor:pointer;transition:transform .3s,box-shadow .3s}
+.service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.service-card.highlighted{border-color:var(--rose);box-shadow:0 0 0 2px var(--rose),var(--shadow-lg)}
+.service-img{height:180px;overflow:hidden;background:linear-gradient(135deg,var(--rose-light),var(--gold-light));display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative}
+.service-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.service-card:hover .service-img img{transform:scale(1.07)}
+.service-body{padding:20px;flex:1;display:flex;flex-direction:column}
+.service-body h3{font-family:var(--ff-display);font-size:1.3rem;color:var(--rose-dark);margin-bottom:6px}
+.service-body p{font-size:.83rem;color:var(--text-muted);line-height:1.6;margin-bottom:14px;flex:1}
+.price-badge{display:inline-block;background:var(--gold-light);color:var(--rose-dark);border-radius:20px;padding:4px 14px;font-size:.78rem;font-weight:600;letter-spacing:.5px}
+.book-btn{margin-top:14px;width:100%;background:var(--rose);color:#fff;border:none;border-radius:30px;padding:10px;font-weight:600;font-size:.85rem;cursor:pointer;transition:background .2s;font-family:var(--ff-body)}
+.book-btn:hover{background:var(--rose-dark)}
+
+/* WHY CHOOSE */
+.why-section{background:#fff}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:800px;margin:0 auto}
+@media(min-width:640px){.why-grid{grid-template-columns:1fr 1fr}}
+.why-card{background:var(--cream);border-radius:var(--radius);padding:24px;border:1px solid var(--border);text-align:center}
+.why-icon{font-size:2rem;color:var(--rose);margin-bottom:12px}
+.why-card h4{font-family:var(--ff-display);font-size:1.15rem;color:var(--rose-dark);margin-bottom:8px}
+.why-card p{font-size:.82rem;color:var(--text-muted);line-height:1.6}
+
+/* VIDEO */
+.video-section{background:var(--cream)}
+.video-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:800px;margin:0 auto}
+@media(max-width:600px){.video-grid{grid-template-columns:1fr}}
+.video-card{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);background:#000;aspect-ratio:9/16;position:relative}
+.video-card iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+
+/* TESTIMONIALS */
+.testimonials-section{background:#fff;padding:60px 20px}
+.testimonial-slider{max-width:600px;margin:0 auto;position:relative}
+.testimonial-card{background:var(--cream);border-radius:var(--radius-lg);padding:32px 28px;box-shadow:var(--shadow);border:1px solid var(--border);transition:opacity .2s}
+.testimonial-quote{font-size:2.5rem;color:var(--gold);line-height:1;margin-bottom:12px;font-family:Georgia,serif}
+.testimonial-text{font-size:1rem;color:var(--text);line-height:1.8;font-style:italic;margin-bottom:20px;border-left:3px solid var(--gold);padding-left:16px}
+.testimonial-author{text-align:right;font-family:var(--ff-display);font-size:1.1rem;color:var(--rose);font-weight:600}
+.testimonial-dots{display:flex;justify-content:center;gap:8px;margin-top:20px}
+.t-dot{width:8px;height:8px;border-radius:50%;background:var(--gold-light);cursor:pointer;transition:all .3s;border:none}
+.t-dot.active{background:var(--gold);width:24px;border-radius:4px}
+
+/* FAQ */
+.faq-section{background:var(--cream)}
+.faq-list{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:#fff;border-radius:var(--radius);border:1px solid var(--border);overflow:hidden}
+.faq-q{width:100%;background:none;border:none;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-family:var(--ff-body);font-size:.95rem;font-weight:500;color:var(--text);text-align:left;gap:12px}
+.faq-q:hover{color:var(--rose)}
+.faq-icon{color:var(--rose);font-size:.9rem;flex-shrink:0;transition:transform .3s}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease}
+.faq-item.open .faq-a{max-height:200px;padding:0 24px 20px}
+.faq-a p{font-size:.88rem;color:var(--text-muted);line-height:1.7}
+
+/* FOLLOW */
+.follow-section{background:linear-gradient(135deg,var(--rose-dark),#5c0a3e);text-align:center;padding:80px 20px}
+.follow-section .section-title{color:#fff}
+.follow-section .section-sub{color:rgba(255,255,255,.7);margin:0 auto 40px}
+.social-icons{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.social-link{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.12);color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.2);border-radius:40px;padding:12px 24px;font-weight:500;font-size:.9rem;transition:all .3s;backdrop-filter:blur(8px)}
+.social-link:hover{background:rgba(255,255,255,.25);transform:translateY(-3px)}
+.instagram-icon{color:#f77737}
+.youtube-icon{color:#ff0000}
+
+/* MAP */
+.map-section{background:var(--cream);padding:80px 20px}
+.map-info-card{max-width:1000px;margin:0 auto 20px;background:#fff;border-radius:var(--radius);padding:16px 20px;border:1px solid var(--border);box-shadow:var(--shadow);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.map-info-card i{color:var(--rose);font-size:1.2rem}
+.map-info-text{flex:1}
+.map-info-text strong{font-family:var(--ff-display);color:var(--rose-dark);font-size:1rem;display:block}
+.map-info-text span{font-size:.82rem;color:var(--text-muted)}
+.map-open-btn{background:var(--rose);color:#fff;border:none;border-radius:20px;padding:8px 18px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:var(--ff-body);text-decoration:none;display:inline-block;transition:background .2s;white-space:nowrap}
+.map-open-btn:hover{background:var(--rose-dark)}
+.map-container{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);max-width:1000px;margin:0 auto;border:2px solid var(--border)}
+.map-container iframe{width:100%;height:400px;border:none;display:block}
+
+/* CONTACT */
+.contact-section{background:#fff}
+.contact-inner{display:grid;grid-template-columns:1fr;gap:48px;max-width:900px;margin:0 auto}
+@media(min-width:768px){.contact-inner{grid-template-columns:1fr 1fr;align-items:start}}
+.contact-info h3{font-family:var(--ff-display);font-size:1.6rem;color:var(--rose-dark);margin-bottom:16px}
+.contact-info p{font-size:.9rem;color:var(--text-muted);line-height:1.8;margin-bottom:20px}
+.contact-detail{display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:.88rem;color:var(--text-muted)}
+.contact-detail i{color:var(--rose);width:18px}
+.contact-form{display:flex;flex-direction:column;gap:16px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group label{font-size:.82rem;font-weight:500;color:var(--text-muted)}
+.form-group input,.form-group textarea{padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-family:var(--ff-body);font-size:.9rem;color:var(--text);background:#fff;transition:border-color .2s}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--rose)}
+.form-group textarea{resize:vertical;min-height:90px}
+.submit-btn{background:var(--rose);color:#fff;border:none;border-radius:40px;padding:13px;font-weight:600;font-size:.9rem;cursor:pointer;font-family:var(--ff-body);transition:all .25s;box-shadow:0 4px 20px rgba(194,24,91,.25)}
+.submit-btn:hover{background:var(--rose-dark);transform:translateY(-2px)}
+.success-msg{display:none;background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-radius:10px;padding:16px;text-align:center;color:#2e7d32;font-weight:500;font-size:.9rem}
+.success-msg.show{display:block}
+
+/* FOOTER */
+footer{background:var(--text);color:rgba(255,255,255,.7);padding:48px 20px 28px}
+.footer-inner{max-width:1000px;margin:0 auto}
+.footer-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:32px;margin-bottom:32px}
+.footer-brand{max-width:280px}
+.footer-brand h3{font-family:var(--ff-display);font-size:1.4rem;color:#fff;margin-bottom:8px}
+.footer-brand p{font-size:.83rem;line-height:1.7}
+.footer-links h4{color:#fff;font-size:.85rem;font-weight:600;margin-bottom:16px;letter-spacing:.5px;text-transform:uppercase}
+.footer-links a{display:block;color:rgba(255,255,255,.6);text-decoration:none;font-size:.83rem;margin-bottom:8px;transition:color .2s}
+.footer-links a:hover{color:var(--rose-light)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;text-align:center;font-size:.8rem}
+
+/* STICKY BAR */
+.sticky-book-bar{position:fixed;bottom:0;left:0;right:0;z-index:900;background:linear-gradient(135deg,var(--gold),#c8943a);color:#1a1a1a;text-align:center;padding:14px 20px;font-weight:700;font-size:.95rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 -4px 20px rgba(212,168,67,.4);transition:transform .3s ease,opacity .3s ease;text-decoration:none}
+.sticky-book-bar.hidden{transform:translateY(100%);opacity:0;pointer-events:none}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s,transform .6s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.hi{display:none}
+body.lang-hi .hi{display:block!important}
+body.lang-hi .en{display:none!important}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--cream)}
+::-webkit-scrollbar-thumb{background:var(--rose-light);border-radius:2px}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="site-header">
+  <div class="header-inner">
+    <a class="logo-wrap" href="index.html" aria-label="Anshika Beauty Parlour Home">
+      <img src="icon.png" alt="Anshika Beauty Parlour Logo" width="44" height="44"/>
+      <span class="brand-name">Anshika Beauty Parlour</span>
+    </a>
+    <div class="header-actions">
+      <button class="lang-toggle" id="langBtn" aria-label="Toggle Language">EN</button>
+      <button class="icon-btn" id="cartBtn" aria-label="Cart">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-badge" id="cartCount">0</span>
+      </button>
+      <div class="hamburger" id="hamburger" role="button" aria-label="Menu" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- SIDE MENU -->
+<div class="overlay" id="overlay"></div>
+<aside class="side-menu" id="sideMenu">
+  <button class="close-btn" id="closeMenu" aria-label="Close Menu"><i class="fa-solid fa-xmark"></i></button>
+  <nav>
+    <a href="index.html" class="menu-link"><span class="en">Home</span><span class="hi">होम</span></a>
+    <a href="services.html" class="menu-link"><span class="en">Services</span><span class="hi">सेवाएँ</span></a>
+    <a href="index.html#reviews" class="menu-link"><span class="en">Reviews</span><span class="hi">समीक्षा</span></a>
+    <a href="#faq" class="menu-link"><span class="en">FAQs</span><span class="hi">सवाल</span></a>
+    <a href="#contact" class="menu-link"><span class="en">Contact</span><span class="hi">संपर्क</span></a>
+  </nav>
+</aside>
+
+<!-- CART PANEL -->
+<div class="overlay" id="bookingOverlay"></div>
+<div class="booking-panel" id="bookingPanel">
+  <div class="panel-header">
+    <div class="panel-header-left">
+      <h3><i class="fa-solid fa-bag-shopping" style="font-size:1rem;margin-right:6px"></i><span class="en">Recent Bookings</span><span class="hi">हाल की बुकिंग</span></h3>
+      <p><span class="en">Your appointment history</span><span class="hi">आपकी अपॉइंटमेंट हिस्ट्री</span></p>
+    </div>
+    <button class="booking-close" id="bookingClose"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="bookings-section">
+    <div class="bookings-label"><span class="en">Booking History</span><span class="hi">बुकिंग इतिहास</span></div>
+    <div id="bookingsList"></div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="services-hero" id="home">
+  <div class="hero-petals" id="petals"></div>
+  <div class="hero-badge">
+    <i class="fa-solid fa-sparkles"></i>
+    <span class="en">What We Offer</span>
+    <span class="hi">हमारी सेवाएँ</span>
+  </div>
+  <h1 class="en">Our Beauty Services</h1>
+  <h1 class="hi" style="display:none">हमारी सौंदर्य सेवाएँ</h1>
+  <p class="en">Premium beauty treatments crafted with care — for every woman, every occasion.</p>
+  <p class="hi" style="display:none">हर महिला के लिए, हर मौके के लिए — बेहतरीन सौंदर्य सेवाएँ।</p>
+  <a href="#services" class="btn btn-primary" style="animation:fadeUp .6s .3s both">
+    <i class="fa-solid fa-arrow-down"></i>
+    <span class="en">See All Services</span>
+    <span class="hi">सभी सेवाएँ देखें</span>
+  </a>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section reveal" id="services">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label"><span class="en">What We Offer</span><span class="hi">क्या है हमारे पास</span></span>
+      <h2 class="section-title"><span class="en">Our Services</span><span class="hi">हमारी सेवाएँ</span></h2>
+      <p class="section-sub"><span class="en">Premium beauty treatments crafted with care for every woman.</span><span class="hi">हर महिला के लिए प्रेम से तैयार बेहतरीन सौंदर्य सेवाएँ।</span></p>
+    </div>
+    <div class="services-grid" id="servicesGrid"></div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="why-section reveal" id="why">
+  <div class="container">
+    <div class="section-header" style="text-align:center">
+      <span class="section-label"><span class="en">Why Us?</span><span class="hi">हमें क्यों चुनें?</span></span>
+      <h2 class="section-title"><span class="en">Why Choose Anshika Beauty Parlour?</span><span class="hi">अंशिका ब्यूटी पार्लर ही क्यों?</span></h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon"><i class="fa-solid fa-crown"></i></div>
+        <h4><span class="en">Premium Products Only</span><span class="hi">सिर्फ बेहतरीन प्रोडक्ट्स</span></h4>
+        <p><span class="en">We use quality products — safe, skin-friendly aur long-lasting results ke liye.</span><span class="hi">क्वालिटी प्रोडक्ट्स — स्किन-फ्रेंडली और लॉन्ग-लास्टिंग।</span></p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fa-solid fa-hands-holding"></i></div>
+        <h4><span class="en">Expert Hands, Real Care</span><span class="hi">एक्सपर्ट हाथ, सच्ची देखभाल</span></h4>
+        <p><span class="en">Har service mein dil lagakar kaam karte hain — aapko feel hoga difference.</span><span class="hi">हर सर्विस में दिल लगाकर काम — आपको फर्क महसूस होगा।</span></p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fa-solid fa-star"></i></div>
+        <h4><span class="en">5★ Rated by Clients</span><span class="hi">ग्राहकों की 5★ रेटिंग</span></h4>
+        <p><span class="en">Hamare clients hamari sabse badi strength hain — unka trust hi hamari pehchaan hai.</span><span class="hi">हमारे ग्राहक हमारी ताकत हैं — उनका भरोसा ही हमारी पहचान।</span></p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fa-solid fa-heart"></i></div>
+        <h4><span class="en">Welcoming for All</span><span class="hi">सबका स्वागत है</span></h4>
+        <p><span class="en">Sabhi ko equal respect aur attention milti hai — yahan koi bhi akela nahi jaata.</span><span class="hi">सभी को बराबर सम्मान — यहाँ कोई भी अकेला नहीं जाता।</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="video-section reveal" id="videos">
+  <div class="container">
+    <div class="section-header" style="text-align:center">
+      <span class="section-label"><span class="en">Our Work</span><span class="hi">हमारा काम</span></span>
+      <h2 class="section-title"><span class="en">Watch Our Makeovers</span><span class="hi">हमारे मेकओवर देखें</span></h2>
+      <p class="section-sub" style="margin:0 auto"><span class="en">Real transformations, real results — see it yourself.</span><span class="hi">असली बदलाव, असली नतीजे — खुद देखिए।</span></p>
+    </div>
+    <div class="video-grid">
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/J2yHcPJLcOA?autoplay=1&mute=1&loop=1&playlist=J2yHcPJLcOA&playsinline=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen title="Anshika Beauty Video 1" loading="lazy"></iframe>
+      </div>
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/M6eSXWXZyKI?autoplay=1&mute=1&loop=1&playlist=M6eSXWXZyKI&playsinline=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen title="Anshika Beauty Video 2" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section reveal" id="testimonials">
+  <div class="container">
+    <div class="section-header" style="text-align:center;margin-bottom:32px">
+      <h2 class="section-title"><span class="en">Testimonials</span><span class="hi">प्रशंसापत्र</span></h2>
+      <div style="width:60px;height:3px;background:var(--gold);margin:8px auto 0"></div>
+      <p class="section-sub" style="margin:12px auto 0"><span class="en">Trust, in their own words.</span><span class="hi">विश्वास, उनके अपने शब्दों में।</span></p>
+    </div>
+    <div class="testimonial-slider">
+      <div class="testimonial-card" id="testimonialCard" style="transition:opacity .2s">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text" id="testimonialText"></p>
+        <div class="testimonial-author" id="testimonialAuthor"></div>
+      </div>
+      <div class="testimonial-dots" id="testimonialDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section reveal" id="faq">
+  <div class="container">
+    <div class="section-header" style="text-align:center">
+      <span class="section-label">FAQs</span>
+      <h2 class="section-title"><span class="en">Frequently Asked Questions</span><span class="hi">अक्सर पूछे जाने वाले सवाल</span></h2>
+    </div>
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<!-- FOLLOW -->
+<section class="follow-section reveal" id="follow">
+  <span class="section-label" style="background:rgba(255,255,255,.15);color:#fff"><span class="en">Follow Us</span><span class="hi">हमें फॉलो करें</span></span>
+  <h2 class="section-title" style="margin-top:12px;margin-bottom:8px"><span class="en">Stay Connected</span><span class="hi">जुड़े रहें</span></h2>
+  <p class="section-sub" style="margin:0 auto 40px;color:rgba(255,255,255,.7)"><span class="en">Follow for daily beauty inspiration, tips & behind-the-scenes.</span><span class="hi">रोज़ाना ब्यूटी टिप्स और लेटेस्ट अपडेट के लिए फॉलो करें।</span></p>
+  <div class="social-icons">
+    <a href="https://www.instagram.com/an_shikabeauty_parlour/" class="social-link" target="_blank" rel="noopener">
+      <i class="fa-brands fa-instagram instagram-icon"></i> @an_shikabeauty_parlour
+    </a>
+    <a href="https://youtube.com/@anshikabeautyparlour-c4m" class="social-link" target="_blank" rel="noopener">
+      <i class="fa-brands fa-youtube youtube-icon"></i> Anshika Beauty Parlour
+    </a>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map-section reveal" id="location">
+  <div class="container">
+    <div class="section-header" style="text-align:center">
+      <span class="section-label"><span class="en">Find Us</span><span class="hi">हमें खोजें</span></span>
+      <h2 class="section-title"><span class="en">Our Location</span><span class="hi">हमारा पता</span></h2>
+      <p class="section-sub" style="margin:0 auto"><span class="en">Mithaura Bazar, District Maharajganj, UP 273207</span><span class="hi">मिथौरा बाज़ार, जिला महाराजगंज, उत्तर प्रदेश 273207</span></p>
+    </div>
+    <div class="map-info-card">
+      <i class="fa-solid fa-location-dot"></i>
+      <div class="map-info-text">
+        <strong>Anshika Beauty Parlour</strong>
+        <span><span class="en">Mithaura Bazar, Maharajganj, Uttar Pradesh 273207</span><span class="hi">मिथौरा बाज़ार, महाराजगंज, उत्तर प्रदेश 273207</span></span>
+      </div>
+      <a href="https://maps.google.com/?q=Anshika+Beauty+Parlour+Mithaura+Bazar+Maharajganj+UP" target="_blank" rel="noopener" class="map-open-btn">
+        <i class="fa-solid fa-directions"></i> <span class="en">Open in Maps</span><span class="hi">मैप में खोलें</span>
+      </a>
+    </div>
+    <div class="map-container">
+      <iframe src="https://maps.google.com/maps?q=Anshika+Beauty+Parlour+Mithaura+Bazar+Maharajganj+UP&output=embed&z=16" allowfullscreen loading="lazy" title="Anshika Beauty Parlour Location" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section reveal" id="contact">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label"><span class="en">Get in Touch</span><span class="hi">संपर्क करें</span></span>
+      <h2 class="section-title"><span class="en">Contact Us</span><span class="hi">हमसे बात करें</span></h2>
+    </div>
+    <div class="contact-inner">
+      <div class="contact-info">
+        <h3><span class="en">We'd Love to Hear from You</span><span class="hi">हमें आपसे सुनना अच्छा लगेगा</span></h3>
+        <p><span class="en">Send us your details and we'll reach out to help you book your perfect beauty appointment.</span><span class="hi">हमें अपना विवरण भेजें, हम आपसे संपर्क करेंगे।</span></p>
+        <div class="contact-detail"><i class="fa-solid fa-location-dot"></i> Mithaura Bazar, Maharajganj, UP 273207</div>
+        <div class="contact-detail"><i class="fa-solid fa-envelope"></i> beautyparlouranshika011@gmail.com</div>
+        <div class="contact-detail"><i class="fa-brands fa-instagram"></i> @an_shikabeauty_parlour</div>
+      </div>
+      <div>
+        <form class="contact-form" id="contactForm" action="https://formsubmit.co/beautyparlouranshika011@gmail.com" method="POST">
+          <input type="hidden" name="_captcha" value="false"/>
+          <input type="hidden" name="_subject" value="New inquiry from website"/>
+          <input type="hidden" name="_template" value="table"/>
+          <input type="hidden" name="_next" value="javascript:void(0)"/>
+          <div class="form-group">
+            <label><span class="en">Your Name</span><span class="hi">आपका नाम</span></label>
+            <input type="text" name="name" required placeholder="Your Name" autocomplete="name"/>
+          </div>
+          <div class="form-group">
+            <label><span class="en">Email Address</span><span class="hi">ईमेल पता</span></label>
+            <input type="email" name="email" required placeholder="your@email.com" autocomplete="email"/>
+          </div>
+          <div class="form-group">
+            <label><span class="en">Phone Number (Optional)</span><span class="hi">फोन नंबर (वैकल्पिक)</span></label>
+            <input type="tel" name="phone" placeholder="9999999999" autocomplete="tel"/>
+          </div>
+          <div class="form-group">
+            <label><span class="en">Message (Optional)</span><span class="hi">संदेश (वैकल्पिक)</span></label>
+            <textarea name="message" placeholder="Koi bhi sawaal ya request likhein..."></textarea>
+          </div>
+          <button type="submit" class="submit-btn">
+            <i class="fa-solid fa-paper-plane"></i>
+            <span class="en"> Send Message</span><span class="hi"> संदेश भेजें</span>
+          </button>
+        </form>
+        <div class="success-msg" id="successMsg">
+          <i class="fa-solid fa-circle-check" style="font-size:1.4rem;color:#2e7d32;display:block;margin-bottom:8px"></i>
+          <span class="en">Thank you! We will contact you soon. 💖</span>
+          <span class="hi">धन्यवाद! हम जल्द आपसे संपर्क करेंगे। 💖</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>Anshika Beauty Parlour</h3>
+        <p>Premium beauty services in Mithaura Bazar, Maharajganj, Uttar Pradesh. Making every woman feel beautiful.</p>
+      </div>
+      <div class="footer-links">
+        <h4><span class="en">Quick Links</span><span class="hi">लिंक</span></h4>
+        <a href="services.html"><span class="en">Services</span><span class="hi">सेवाएँ</span></a>
+        <a href="index.html#reviews"><span class="en">Reviews</span><span class="hi">समीक्षा</span></a>
+        <a href="#faq">FAQs</a>
+        <a href="#contact"><span class="en">Contact</span><span class="hi">संपर्क</span></a>
+      </div>
+      <div class="footer-links">
+        <h4><span class="en">Legal</span><span class="hi">कानूनी</span></h4>
+        <a href="#"><span class="en">Privacy Policy</span><span class="hi">प्राइवेसी पॉलिसी</span></a>
+        <a href="#"><span class="en">Terms of Service</span><span class="hi">सेवा की शर्तें</span></a>
+      </div>
+      <div class="footer-links">
+        <h4><span class="en">Follow</span><span class="hi">फॉलो</span></h4>
+        <a href="https://www.instagram.com/an_shikabeauty_parlour/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i> Instagram</a>
+        <a href="https://youtube.com/@anshikabeautyparlour-c4m" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i> YouTube</a>
+        <a href="mailto:beautyparlouranshika011@gmail.com"><i class="fa-solid fa-envelope"></i> Email Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Anshika Beauty Parlour. <span class="en">All rights reserved.</span><span class="hi">सभी अधिकार सुरक्षित।</span></p>
+    </div>
+  </div>
+</footer>
+
+<!-- STICKY BOOK BAR -->
+<a href="book-now.html" class="sticky-book-bar" id="stickyBar">
+  <i class="fa-solid fa-calendar-check"></i>
+  <span class="en">✨ Book Appointment Now</span>
+  <span class="hi">✨ अभी अपॉइंटमेंट बुक करें</span>
+</a>
+
+<script>
+const SERVICES = [
+  {en:"Bridal Makeup",hi:"ब्राइडल मेकअप",img:"https://images.pexels.com/photos/14826512/pexels-photo-14826512.jpeg",desc_en:"Look absolutely stunning on your most special day with our premium bridal packages.",desc_hi:"अपने सबसे खास दिन पर बनें सबसे खूबसूरत — हमारे ब्राइडल पैकेज के साथ।",icon:"fa-crown"},
+  {en:"Facial",hi:"फेशियल",img:"https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&q=80",desc_en:"Brighten and rejuvenate your skin with our expert facial treatments suited for all skin types.",desc_hi:"सभी स्किन टाइप के लिए हमारे एक्सपर्ट फेशियल ट्रीटमेंट से अपनी त्वचा को निखारें।",icon:"fa-face-smile-beam"},
+  {en:"Body Waxing",hi:"बॉडी वैक्सिंग",img:"https://images.unsplash.com/photo-1559598467-f8b76c8155d0?w=400&q=80",desc_en:"Smooth, silky skin with our gentle and effective body waxing services.",desc_hi:"हमारी जेंटल वैक्सिंग से पाएँ मुलायम और चिकनी त्वचा।",icon:"fa-hand-sparkles"},
+  {en:"Manicure",hi:"मैनीक्योर",img:"https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80",desc_en:"Beautiful, well-groomed nails with our relaxing manicure sessions.",desc_hi:"हमारी रिलैक्सिंग मैनीक्योर सेशन से पाएँ खूबसूरत नाखून।",icon:"fa-hand"},
+  {en:"Hairstyling",hi:"हेयरस्टाइलिंग",img:"https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=80",desc_en:"From cuts to curls, blowouts to braids — our stylists create your perfect look.",desc_hi:"कट से लेकर कर्ल तक — हमारे स्टाइलिस्ट आपका परफेक्ट लुक बनाते हैं।",icon:"fa-scissors"},
+  {en:"Party Makeup",hi:"पार्टी मेकअप",img:"https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=400&q=80",desc_en:"Stand out at every celebration with our glamorous party makeup looks.",desc_hi:"हर पार्टी में चमकें हमारे ग्लैमरस मेकअप से।",icon:"fa-star"},
+  {en:"Airbrush Makeup",hi:"एयरब्रश मेकअप",img:"https://images.pexels.com/photos/34689878/pexels-photo-34689878.jpeg",desc_en:"Flawless, photo-ready finish with our professional airbrush makeup technique.",desc_hi:"प्रोफेशनल एयरब्रश से पाएँ बेदाग, फोटो-रेडी फिनिश।",icon:"fa-spray-can-sparkles"},
+  {en:"Massage",hi:"मसाज",img:"https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&q=80",desc_en:"Melt away stress with our soothing head, face, and body massage therapies.",desc_hi:"हमारी सुकून भरी मसाज थेरेपी से तनाव को दूर करें।",icon:"fa-spa"},
+];
+const FAQS = [
+  {q_en:"Facial kitne time mein hota hai?",q_hi:"फेशियल कितने समय में होता है?",a_en:"Ek standard facial mein lagbhag 45–60 minute lagte hain.",a_hi:"एक सामान्य फेशियल लगभग 45–60 मिनट में होता है।"},
+  {q_en:"Bridal makeup booking kaise karein?",q_hi:"ब्राइडल मेकअप बुकिंग कैसे करें?",a_en:"Aap WhatsApp, Instagram ya contact form ke zariye humse sampark kar sakti hain. Bridal ke liye 1–2 hafte pehle booking karein.",a_hi:"आप WhatsApp, Instagram या form के ज़रिए संपर्क करें। ब्राइडल के लिए 1–2 हफ्ते पहले बुकिंग करें।"},
+  {q_en:"Parlour timing kya hai?",q_hi:"पार्लर की टाइमिंग क्या है?",a_en:"Hum roz subah 8:30 baje se shaam 9 baje tak khule rehte hain.",a_hi:"हम सोमवार से रविवार सुबह 8:30 बजे से शाम 9 बजे तक खुले रहते हैं।"},
+  {q_en:"Kya advance booking zaruri hai?",q_hi:"क्या एडवांस बुकिंग ज़रूरी है?",a_en:"Facial, manicure, waxing ke liye walk-in welcome hai. Bridal ya party makeup ke liye advance booking zarur karein.",a_hi:"फेशियल, मैनीक्योर के लिए walk-in स्वीकार है। ब्राइडल या पार्टी के लिए एडवांस बुकिंग ज़रूरी।"},
+];
+const TESTIMONIALS = [
+  {text_en:"Trial se lekar final look tak, sab kuch bahut personal aur premium laga — sach mein ek aisa experience jo kabhi nahi bhoolengi!",text_hi:"ट्रायल से लेकर फाइनल लुक तक, सब कुछ बहुत पर्सनल और प्रीमियम लगा — सच में यादगार अनुभव!",author:"Sakshi Verma"},
+  {text_en:"Bridal makeup ke liye aayi thi aur queen jaisi feel hokar gayi. Har detail pe itna dhyan — ekdum zabardast!",text_hi:"ब्राइडल मेकअप के लिए आई थी और रानी जैसी फील हुई। हर detail पर इतना ध्यान — एकदम जबरदस्त!",author:"Neha Tiwari"},
+  {text_en:"Maharajganj ka best parlour! Saaf, professional, aur kaam ekdum mast. Definitely recommend karungi!",text_hi:"महाराजगंज का बेस्ट पार्लर! साफ, प्रोफेशनल, और काम एकदम मस्त। जरूर recommend करूँगी!",author:"Pooja Shukla"},
+];
+
+let lang = 'en';
+function applyLang(){
+  document.body.classList.toggle('lang-hi',lang==='hi');
+  document.querySelectorAll('.hi').forEach(el=>el.style.display=lang==='hi'?'block':'none');
+  document.querySelectorAll('.en').forEach(el=>el.style.display=lang==='hi'?'none':'block');
+  document.querySelectorAll('span.hi').forEach(el=>el.style.display=lang==='hi'?'inline':'none');
+  document.querySelectorAll('span.en').forEach(el=>el.style.display=lang==='hi'?'none':'inline');
+}
+
+// Check URL for preselected service
+const urlParams = new URLSearchParams(window.location.search);
+const preselectedService = urlParams.get('service');
+
+// Build service cards
+const grid = document.getElementById('servicesGrid');
+SERVICES.forEach(s=>{
+  const card = document.createElement('div');
+  card.className='service-card reveal'+(s.en===preselectedService?' highlighted':'');
+  if(s.en===preselectedService) card.id='highlighted-service';
+  card.innerHTML=`
+    <div class="service-img"><img src="${s.img}" alt="${s.en}" loading="lazy"/></div>
+    <div class="service-body">
+      <h3><span class="en">${s.en}</span><span class="hi" style="display:none">${s.hi}</span></h3>
+      <p><span class="en">${s.desc_en}</span><span class="hi" style="display:none">${s.desc_hi}</span></p>
+      <span class="price-badge"><span class="en">Price: Coming Soon</span><span class="hi">कीमत: जल्द आएगी</span></span>
+      <button class="book-btn" onclick="bookService('${s.en}')">
+        <i class="fa-solid fa-calendar-check"></i>
+        <span class="en"> Book Appointment</span><span class="hi"> अपॉइंटमेंट बुक करें</span>
+      </button>
+    </div>`;
+  grid.appendChild(card);
+});
+
+// Scroll to highlighted service
+if(preselectedService){
+  setTimeout(()=>{
+    const el=document.getElementById('highlighted-service');
+    if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.style.animation='fadeUp .6s both'}
+  },600);
+}
+
+function bookService(serviceName){
+  window.location.href=`book-now.html?service=${encodeURIComponent(serviceName)}`;
+}
+
+// FAQs
+const faqList = document.getElementById('faqList');
+FAQS.forEach(f=>{
+  const item=document.createElement('div');
+  item.className='faq-item';
+  item.innerHTML=`
+    <button class="faq-q">
+      <span><span class="en">${f.q_en}</span><span class="hi" style="display:none">${f.q_hi}</span></span>
+      <i class="fa-solid fa-plus faq-icon"></i>
+    </button>
+    <div class="faq-a"><p><span class="en">${f.a_en}</span><span class="hi" style="display:none">${f.a_hi}</span></p></div>`;
+  item.querySelector('.faq-q').addEventListener('click',()=>{
+    const open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!open)item.classList.add('open');
+  });
+  faqList.appendChild(item);
+});
+
+// Testimonials
+let tIdx=0;
+function renderTestimonial(i){
+  const t=TESTIMONIALS[i];
+  const card=document.getElementById('testimonialCard');
+  card.style.opacity='0';
+  setTimeout(()=>{
+    document.getElementById('testimonialText').innerHTML=`<span class="en">${t.text_en}</span><span class="hi" style="display:none">${t.text_hi}</span>`;
+    document.getElementById('testimonialAuthor').textContent='— '+t.author;
+    applyLang();
+    card.style.opacity='1';
+  },200);
+  document.querySelectorAll('.t-dot').forEach((d,j)=>d.classList.toggle('active',j===i));
+}
+function buildTestimonialDots(){
+  const wrap=document.getElementById('testimonialDots');
+  wrap.innerHTML=TESTIMONIALS.map((_,i)=>`<button class="t-dot${i===0?' active':''}" onclick="goT(${i})"></button>`).join('');
+}
+window.goT=function(i){tIdx=i;renderTestimonial(i)};
+buildTestimonialDots();renderTestimonial(0);
+setInterval(()=>{tIdx=(tIdx+1)%TESTIMONIALS.length;renderTestimonial(tIdx)},4000);
+
+// Language toggle
+document.getElementById('langBtn').addEventListener('click',()=>{
+  lang=lang==='en'?'hi':'en';
+  document.getElementById('langBtn').textContent=lang==='en'?'EN':'HI';
+  applyLang();
+});
+
+// Hamburger menu
+const hamburger=document.getElementById('hamburger');
+const sideMenu=document.getElementById('sideMenu');
+const overlay=document.getElementById('overlay');
+const closeMenu=document.getElementById('closeMenu');
+function openMenu(){sideMenu.classList.add('open');hamburger.classList.add('active');overlay.classList.add('show')}
+function closeMenuFn(){sideMenu.classList.remove('open');hamburger.classList.remove('active');overlay.classList.remove('show')}
+hamburger.addEventListener('click',()=>sideMenu.classList.contains('open')?closeMenuFn():openMenu());
+closeMenu.addEventListener('click',closeMenuFn);
+overlay.addEventListener('click',closeMenuFn);
+document.querySelectorAll('.menu-link').forEach(a=>a.addEventListener('click',closeMenuFn));
+
+// Header scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('site-header').classList.toggle('scrolled',window.scrollY>20);
+},{passive:true});
+
+// Petals
+const petalWrap=document.getElementById('petals');
+for(let i=0;i<14;i++){
+  const p=document.createElement('div');p.className='petal';
+  p.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${4+Math.random()*8}px;height:${4+Math.random()*8}px;animation-delay:${Math.random()*5}s;animation-duration:${4+Math.random()*5}s`;
+  petalWrap.appendChild(p);
+}
+
+// Cart panel
+const bookingPanel=document.getElementById('bookingPanel');
+const bookingOverlay=document.getElementById('bookingOverlay');
+const bookingClose=document.getElementById('bookingClose');
+function getBookings(){try{return JSON.parse(localStorage.getItem('abp_bookings')||'[]')}catch(e){return[]}}
+function renderBookingsList(){
+  const list=document.getElementById('bookingsList');
+  const bookings=getBookings();
+  if(!bookings.length){
+    list.innerHTML=`<div class="no-bookings"><i class="fa-solid fa-calendar-xmark"></i><span class="en">No bookings yet.</span><span class="hi">अभी कोई बुकिंग नहीं।</span></div>`;
+    return;
+  }
+  list.innerHTML=bookings.map(b=>`<div class="booking-item"><div class="booking-item-left"><span class="booking-item-service">${b.service}</span><span class="booking-item-time">${b.date} • ${b.time}</span></div><span class="booking-item-badge" style="${b.status==='pending'?'background:#fff3cd;color:#856404':''}"><span class="en">${b.status==='pending'?'⏳ In Process':'✅ Requested'}</span><span class="hi">${b.status==='pending'?'⏳ प्रक्रिया में':'✅ अनुरोध किया'}</span></span></div>`).join('');
+  applyLang();
+}
+const cartCount0=getBookings().length;
+document.getElementById('cartCount').textContent=cartCount0;
+document.getElementById('cartBtn').addEventListener('click',()=>{
+  if(bookingPanel.classList.contains('open')){bookingPanel.classList.remove('open');bookingOverlay.classList.remove('show')}
+  else{renderBookingsList();bookingPanel.classList.add('open');bookingOverlay.classList.add('show')}
+});
+bookingClose.addEventListener('click',()=>{bookingPanel.classList.remove('open');bookingOverlay.classList.remove('show')});
+bookingOverlay.addEventListener('click',()=>{bookingPanel.classList.remove('open');bookingOverlay.classList.remove('show')});
+
+// Contact form
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  fetch('https://formsubmit.co/ajax/beautyparlouranshika011@gmail.com',{method:'POST',body:new FormData(this),headers:{'Accept':'application/json'}})
+    .then(()=>{this.style.display='none';document.getElementById('successMsg').classList.add('show');this.reset()})
+    .catch(()=>{this.style.display='none';document.getElementById('successMsg').classList.add('show')});
+});
+
+// Scroll reveal
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Sticky bar
+const stickyBar=document.getElementById('stickyBar');
+const footerEl=document.querySelector('footer');
+const fObs=new IntersectionObserver(entries=>{stickyBar.classList.toggle('hidden',entries[0].isIntersecting)});
+if(footerEl)fObs.observe(footerEl);
+</script>
+</body>
+</html>
