@@ -213,7 +213,8 @@ body.lang-hi .en{display:none!important}
       <input type="hidden" name="access_key" value="421f94ae-9b7d-42b4-ab4b-1bb3be252c97"/>
       <input type="hidden" name="subject" value="New Appointment Booking from Website"/>
       <input type="hidden" name="from_name" value="Anshika Beauty Parlour"/>
-
+      <input type="hidden" name="Estimated Price" id="priceHiddenInput" value=""/>
+      
       <div class="form-group">
         <label><i class="fa-solid fa-user"></i> <span class="en">Your Name *</span><span class="hi">आपका नाम *</span></label>
         <input type="text" name="name" id="nameField" required placeholder="Enter your name" autocomplete="name"/>
@@ -341,20 +342,27 @@ const serviceSelect = document.getElementById('serviceSelect');
 const priceDisplay = document.getElementById('priceDisplay');
 const priceValEn = document.getElementById('priceValEn');
 const priceValHi = document.getElementById('priceValHi');
+const priceHiddenInput = document.getElementById('priceHiddenInput'); // Ye naya add hua hai
 
 function updatePriceUI() {
   const selected = serviceSelect.value;
-  if(PRICE_MAP[selected]) {
-    priceValEn.textContent = PRICE_MAP[selected];
-    priceValHi.textContent = PRICE_MAP[selected];
+  // Extra space ya Hindi wale text ko hatakar exact service name nikalne ke liye
+  const exactService = selected.split(' /')[0]; 
+
+  if(PRICE_MAP[exactService]) {
+    priceValEn.textContent = PRICE_MAP[exactService];
+    priceValHi.textContent = PRICE_MAP[exactService];
     priceDisplay.style.display = 'block';
+    
+    // Ye line form ke zariye mail par price bhejegi
+    priceHiddenInput.value = PRICE_MAP[exactService]; 
   } else {
     priceDisplay.style.display = 'none';
+    priceHiddenInput.value = "Not selected"; // Agar koi service select nahi hui
   }
 }
 
 serviceSelect.addEventListener('change', updatePriceUI);
-
 // Preselect service from URL
 const urlParams = new URLSearchParams(window.location.search);
 const preService = urlParams.get('service');
