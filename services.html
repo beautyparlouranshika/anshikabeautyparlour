@@ -526,14 +526,14 @@ style="max-width:540px; width:100%;">
 
 <script>
 const SERVICES = [
-  {en:"Bridal Makeup",hi:"ब्राइडल मेकअप",img:"https://images.pexels.com/photos/14826512/pexels-photo-14826512.jpeg",desc_en:"Look absolutely stunning on your most special day with our premium bridal packages.",desc_hi:"अपने सबसे खास दिन पर बनें सबसे खूबसूरत — हमारे ब्राइडल पैकेज के साथ।",icon:"fa-crown"},
-  {en:"Facial",hi:"फेशियल",img:"https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&q=80",desc_en:"Brighten and rejuvenate your skin with our expert facial treatments suited for all skin types.",desc_hi:"सभी स्किन टाइप के लिए हमारे एक्सपर्ट फेशियल ट्रीटमेंट से अपनी त्वचा को निखारें।",icon:"fa-face-smile-beam"},
-  {en:"Body Waxing",hi:"बॉडी वैक्सिंग",img:"https://images.unsplash.com/photo-1559598467-f8b76c8155d0?w=400&q=80",desc_en:"Smooth, silky skin with our gentle and effective body waxing services.",desc_hi:"हमारी जेंटल वैक्सिंग से पाएँ मुलायम और चिकनी त्वचा।",icon:"fa-hand-sparkles"},
-  {en:"Manicure",hi:"मैनीक्योर",img:"https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80",desc_en:"Beautiful, well-groomed nails with our relaxing manicure sessions.",desc_hi:"हमारी रिलैक्सिंग मैनीक्योर सेशन से पाएँ खूबसूरत नाखून।",icon:"fa-hand"},
-  {en:"Hairstyling",hi:"हेयरस्टाइलिंग",img:"https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=80",desc_en:"From cuts to curls, blowouts to braids — our stylists create your perfect look.",desc_hi:"कट से लेकर कर्ल तक — हमारे स्टाइलिस्ट आपका परफेक्ट लुक बनाते हैं।",icon:"fa-scissors"},
-  {en:"Party Makeup",hi:"पार्टी मेकअप",img:"https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=400&q=80",desc_en:"Stand out at every celebration with our glamorous party makeup looks.",desc_hi:"हर पार्टी में चमकें हमारे ग्लैमरस मेकअप से।",icon:"fa-star"},
-  {en:"Airbrush Makeup",hi:"एयरब्रश मेकअप",img:"https://images.pexels.com/photos/34689878/pexels-photo-34689878.jpeg",desc_en:"Flawless, photo-ready finish with our professional airbrush makeup technique.",desc_hi:"प्रोफेशनल एयरब्रश से पाएँ बेदाग, फोटो-रेडी फिनिश।",icon:"fa-spray-can-sparkles"},
-  {en:"Massage",hi:"मसाज",img:"https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&q=80",desc_en:"Melt away stress with our soothing head, face, and body massage therapies.",desc_hi:"हमारी सुकून भरी मसाज थेरेपी से तनाव को दूर करें।",icon:"fa-spa"},
+  {en:"Bridal Makeup",hi:"ब्राइडल मेकअप",img:"https://images.pexels.com/photos/14826512/pexels-photo-14826512.jpeg",desc_en:"Look absolutely stunning on your most special day with our premium bridal packages.",desc_hi:"अपने सबसे खास दिन पर बनें सबसे खूबसूरत — हमारे ब्राइडल पैकेज के साथ।",icon:"fa-crown", price:"₹3500 - ₹10000"},
+  {en:"Facial",hi:"फेशियल",img:"https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&q=80",desc_en:"Brighten and rejuvenate your skin with our expert facial treatments suited for all skin types.",desc_hi:"सभी स्किन टाइप के लिए हमारे एक्सपर्ट फेशियल ट्रीटमेंट से अपनी त्वचा को निखारें।",icon:"fa-face-smile-beam", price:"₹300 - ₹2000"},
+  {en:"Body Waxing",hi:"बॉडी वैक्सिंग",img:"https://images.unsplash.com/photo-1559598467-f8b76c8155d0?w=400&q=80",desc_en:"Smooth, silky skin with our gentle and effective body waxing services.",desc_hi:"हमारी जेंटल वैक्सिंग से पाएँ मुलायम और चिकनी त्वचा।",icon:"fa-hand-sparkles", price:"₹300 - ₹700"},
+  {en:"Manicure",hi:"मैनीक्योर",img:"https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80",desc_en:"Beautiful, well-groomed nails with our relaxing manicure sessions.",desc_hi:"हमारी रिलैक्सिंग मैनीक्योर सेशन से पाएँ खूबसूरत नाखून।",icon:"fa-hand", price:"₹200"},
+  {en:"Hairstyling",hi:"हेयरस्टाइलिंग",img:"https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=80",desc_en:"From cuts to curls, blowouts to braids — our stylists create your perfect look.",desc_hi:"कट से लेकर कर्ल तक — हमारे स्टाइलिस्ट आपका परफेक्ट लुक बनाते हैं।",icon:"fa-scissors", price:"₹2500 - ₹5000"},
+  {en:"Party Makeup",hi:"पार्टी मेकअप",img:"https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=400&q=80",desc_en:"Stand out at every celebration with our glamorous party makeup looks.",desc_hi:"हर पार्टी में चमकें हमारे ग्लैमरस मेकअप से।",icon:"fa-star", price:"₹800 - ₹1500"},
+  {en:"Airbrush Makeup",hi:"एयरब्रश मेकअप",img:"https://images.pexels.com/photos/34689878/pexels-photo-34689878.jpeg",desc_en:"Flawless, photo-ready finish with our professional airbrush makeup technique.",desc_hi:"प्रोफेशनल एयरब्रश से पाएँ बेदाग, फोटो-रेडी फिनिश।",icon:"fa-spray-can-sparkles", price:"₹10000"},
+  {en:"Massage",hi:"मसाज",img:"https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&q=80",desc_en:"Melt away stress with our soothing head, face, and body massage therapies.",desc_hi:"हमारी सुकून भरी मसाज थेरेपी से तनाव को दूर करें।",icon:"fa-spa", price:"₹300 - ₹1500"}
 ];
 const FAQS = [
   {q_en:"Facial kitne time mein hota hai?",q_hi:"फेशियल कितने समय में होता है?",a_en:"Ek standard facial mein lagbhag 45–60 minute lagte hain.",a_hi:"एक सामान्य फेशियल लगभग 45–60 मिनट में होता है।"},
@@ -571,7 +571,7 @@ SERVICES.forEach(s=>{
     <div class="service-body">
       <h3><span class="en">${s.en}</span><span class="hi" style="display:none">${s.hi}</span></h3>
       <p><span class="en">${s.desc_en}</span><span class="hi" style="display:none">${s.desc_hi}</span></p>
-      <span class="price-badge"><span class="en">Price: Coming Soon</span><span class="hi">कीमत: जल्द आएगी</span></span>
+      <span class="price-badge"><span class="en">Price: ${s.price}</span><span class="hi">कीमत: ${s.price}</span></span>
       <button class="book-btn" onclick="bookService('${s.en}')">
         <i class="fa-solid fa-calendar-check"></i>
         <span class="en"> Book Appointment</span><span class="hi"> अपॉइंटमेंट बुक करें</span>
@@ -677,7 +677,19 @@ function renderBookingsList(){
     list.innerHTML=`<div class="no-bookings"><i class="fa-solid fa-calendar-xmark"></i><span class="en">No bookings yet.</span><span class="hi">अभी कोई बुकिंग नहीं।</span></div>`;
     return;
   }
-  list.innerHTML=bookings.map(b=>`<div class="booking-item"><div class="booking-item-left"><span class="booking-item-service">${b.service}</span><span class="booking-item-time">${b.date} • ${b.time}</span></div><span class="booking-item-badge" style="${b.status==='pending'?'background:#fff3cd;color:#856404':''}"><span class="en">${b.status==='pending'?'⏳ In Process':'✅ Requested'}</span><span class="hi">${b.status==='pending'?'⏳ प्रक्रिया में':'✅ अनुरोध किया'}</span></span></div>`).join('');
+    list.innerHTML = bookings.map(b=>`
+    <div class="booking-item">
+      <div class="booking-item-left">
+        <span class="booking-item-service">${b.service||'General'}</span>
+        <span class="booking-item-time"><i class="fa-regular fa-clock" style="margin-right:4px"></i>${b.date} • ${b.time}</span>
+      </div>
+      <div style="text-align:right; display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
+        <span style="font-weight:700; color:var(--rose-dark); font-size:0.85rem;">${b.price || ''}</span>
+        <span class="booking-item-badge" style="${b.status==='pending'?'background:#fff3cd;color:#856404;':''}">
+          ${b.status==='pending'?'<span class="en">⏳ In Process</span><span class="hi">⏳ प्रक्रिया में</span>':'<span class="en">✅ Requested</span><span class="hi">✅ अनुरोध किया</span>'}
+        </span>
+      </div>
+    </div>`).join('');
   applyLang();
 }
 const cartCount0=getBookings().length;
