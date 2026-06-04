@@ -243,6 +243,10 @@ body.lang-hi .en{display:none!important}
           <option value="Massage">Massage / मसाज</option>
           <option value="Other">Other / अन्य</option>
         </select>
+        <div id="priceDisplay" style="margin-top:10px; font-weight:600; color:var(--rose); font-size:0.95rem; display:none; background:var(--rose-light); padding:8px 14px; border-radius:10px;">
+          <span class="en">Price: <span id="priceValEn"></span></span>
+          <span class="hi">कीमत: <span id="priceValHi"></span></span>
+         </div>
       </div>
 
       <div class="form-group">
@@ -320,17 +324,54 @@ function applyLang(){
   document.querySelectorAll('span.en').forEach(el=>el.style.display=lang==='hi'?'none':'inline');
 }
 
+// Prices Map banayenge
+const PRICE_MAP = {
+  "Bridal Makeup": "₹3500 - ₹10000",
+  "Facial": "₹300 - ₹2000",
+  "Body Waxing": "₹300 - ₹700",
+  "Manicure": "₹200",
+  "Hairstyling": "₹2500 - ₹5000",
+  "Party Makeup": "₹800 - ₹1500",
+  "Airbrush Makeup": "₹10000",
+  "Massage": "₹300 - ₹1500"
+};
+
+// Dropdown aur Price box ka logic
+const serviceSelect = document.getElementById('serviceSelect');
+const priceDisplay = document.getElementById('priceDisplay');
+const priceValEn = document.getElementById('priceValEn');
+const priceValHi = document.getElementById('priceValHi');
+
+function updatePriceUI() {
+  const selected = serviceSelect.value;
+  if(PRICE_MAP[selected]) {
+    priceValEn.textContent = PRICE_MAP[selected];
+    priceValHi.textContent = PRICE_MAP[selected];
+    priceDisplay.style.display = 'block';
+  } else {
+    priceDisplay.style.display = 'none';
+  }
+}
+
+serviceSelect.addEventListener('change', updatePriceUI);
+
 // Preselect service from URL
 const urlParams = new URLSearchParams(window.location.search);
 const preService = urlParams.get('service');
 if(preService){
-  const sel = document.getElementById('serviceSelect');
-  for(let i=0;i<sel.options.length;i++){
-    if(sel.options[i].value === preService){sel.selectedIndex=i;break}
+  for(let i=0;i<serviceSelect.options.length;i++){
+    // Value start with service name before ' /'
+    if(serviceSelect.options[i].value === preService || serviceSelect.options[i].value.startsWith(preService)){
+      serviceSelect.selectedIndex=i;
+      break;
+    }
   }
   // Auto-fill message
   const msgField = document.getElementById('messageField');
   if(!msgField.value) msgField.placeholder = `I'd like to book ${preService}...`;
+  
+  // Price ko update kardo turant
+  updatePriceUI();
 }
 
 // Bookings from localStorage
@@ -338,8 +379,14 @@ function getBookings(){try{return JSON.parse(localStorage.getItem('abp_bookings'
 function saveBooking(service, emailSent){
   const bookings=getBookings();
   const now=new Date();
+  
+  // Jo service select hui hai uska price nikal rahe hain
+  const exactService = service.split(' /')[0]; // Bridal Makeup / ब्राइडल मेकअप jaisa naam sahi karne ke liye
+  const currentPrice = PRICE_MAP[exactService] || '';
+
   bookings.unshift({
-    service,
+    service: exactService,
+    price: currentPrice,
     date:now.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}),
     time:now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',hour12:true}),
     ts:now.getTime(),
@@ -347,6 +394,7 @@ function saveBooking(service, emailSent){
   });
   localStorage.setItem('abp_bookings',JSON.stringify(bookings));
 }
+
 function renderBookingsList(){
   const list=document.getElementById('bookingsList');
   const bookings=getBookings();
@@ -354,7 +402,17 @@ function renderBookingsList(){
     list.innerHTML=`<div class="no-bookings"><i class="fa-solid fa-calendar-xmark"></i><span class="en">No bookings yet.</span><span class="hi">अभी कोई बुकिंग नहीं।</span></div>`;
     return;
   }
-  list.innerHTML=bookings.map(b=>`<div class="booking-item"><div class="booking-item-left"><span class="booking-item-service">${b.service||'General'}</span><span class="booking-item-time">${b.date} • ${b.time}</span></div><span class="booking-item-badge" style="${b.status==='pending'?'background:#fff3cd;color:#856404':''}"><span class="en">${b.status==='pending'?'⏳ In Process':'✅ Requested'}</span><span class="hi">${b.status==='pending'?'⏳ प्रक्रिया में':'✅ अनुरोध किया'}</span></span></div>`).join('');
+  list.innerHTML=bookings.map(b=>`
+    <div class="booking-item">
+      <div class="booking-item-left">
+        <span class="booking-item-service">${b.service||'General'}</span>
+        <span class="booking-item-time"><i class="fa-regular fa-clock" style="margin-right:4px"></i>${b.date} • ${b.time}</span>
+      </div>
+      <div style="text-align:right; display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
+        <span style="font-weight:700; color:var(--rose-dark); font-size:0.85rem;">${b.price || ''}</span>
+        <span class="booking-item-badge" style="${b.status==='pending'?'background:#fff3cd;color:#856404':''}"><span class="en">${b.status==='pending'?'⏳ In Process':'✅ Requested'}</span><span class="hi">${b.status==='pending'?'⏳ प्रक्रिया में':'✅ अनुरोध किया'}</span></span>
+      </div>
+    </div>`).join('');
   applyLang();
 }
 
