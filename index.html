@@ -660,7 +660,60 @@ body.lang-hi .en{display:none!important}
   font-family:var(--ff-body);text-decoration:none;display:inline-block;transition:background .2s;
   white-space:nowrap;
 }
-.map-open-btn:hover{background:var(--rose-dark)}</style>
+.map-open-btn:hover{background:var(--rose-dark)}
+  
+/* ── PROMO POPUP ── */
+.promo-popup-overlay {
+  position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6);
+  z-index: 4000; display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+  backdrop-filter: blur(4px);
+}
+.promo-popup-overlay.show {
+  opacity: 1; pointer-events: all;
+}
+.promo-popup-card {
+  background: var(--cream); border-radius: var(--radius-lg);
+  padding: 30px 24px 24px; max-width: 320px; width: 90%;
+  text-align: center; position: relative;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.25);
+  transform: translateY(40px) scale(0.9); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid var(--rose-light);
+}
+.promo-popup-overlay.show .promo-popup-card {
+  transform: translateY(0) scale(1);
+}
+.promo-close {
+  position: absolute; top: 12px; right: 12px;
+  background: rgba(194, 24, 91, 0.1); border: none; border-radius: 50%;
+  width: 30px; height: 30px; cursor: pointer; color: var(--rose-dark);
+  display: flex; align-items: center; justify-content: center; transition: background 0.2s;
+}
+.promo-close:hover { background: rgba(194, 24, 91, 0.2); }
+.promo-img {
+  width: 80px; height: 80px; border-radius: 50%; object-fit: cover;
+  margin: 0 auto 16px; border: 3px solid var(--gold-light);
+  box-shadow: var(--shadow);
+}
+.promo-title { 
+  font-family: var(--ff-display); font-size: 1.6rem; color: var(--rose-dark); 
+  margin-bottom: 4px; line-height: 1.2; font-weight: 700; 
+}
+.promo-discount { 
+  font-size: 2.2rem; color: var(--rose); font-weight: 700; 
+  margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(194,24,91,0.1); 
+}
+.promo-desc { 
+  font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; line-height: 1.5; 
+}
+.promo-btn {
+  display: inline-block; width: 100%; background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+  color: #fff; text-decoration: none; padding: 12px; border-radius: 30px;
+  font-weight: 600; font-size: 0.95rem; box-shadow: 0 4px 16px rgba(194, 24, 91, 0.3);
+  transition: transform 0.2s; font-family: var(--ff-body);
+}
+.promo-btn:hover { transform: translateY(-2px); }
+</style>
 </head>
 <body>
 
@@ -1010,6 +1063,30 @@ body.lang-hi .en{display:none!important}
     </div>
   </div>
 </footer>
+
+<!-- PROMO POPUP -->
+<div class="promo-popup-overlay" id="promoPopup">
+  <div class="promo-popup-card" id="promoCard">
+    <button class="promo-close" id="promoClose"><i class="fa-solid fa-xmark"></i></button>
+    
+    <!-- Yahan aapka image use ho raha hai -->
+    <img src="1000169192.png" alt="Anshika Beauty Parlour Logo" class="promo-img"/>
+    
+    <div class="promo-title">
+      <span class="en">Special Offer!</span>
+      <span class="hi">खास ऑफर!</span>
+    </div>
+    <div class="promo-discount">10% OFF</div>
+    <p class="promo-desc">
+      <span class="en">Book your appointment today and get a flat 10% discount on all services.</span>
+      <span class="hi">आज ही अपॉइंटमेंट बुक करें और सभी सेवाओं पर 10% की छूट पाएं।</span>
+    </p>
+    <a href="book-now.html" class="promo-btn">
+      <span class="en">Claim Offer Now</span>
+      <span class="hi">अभी ऑफर क्लेम करें</span>
+    </a>
+  </div>
+</div>
 
 <script>
 // ─── DATA ───────────────────────────────────────────────
@@ -1448,5 +1525,46 @@ const observer=new IntersectionObserver(entries=>{
 },{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 </script>
+
+// ─── PROMO POPUP LOGIC ───────────────────────────────────────
+// Check karte hain ki kya is session mein pehle popup dikh chuka hai ya nahi
+if (!sessionStorage.getItem('promoShown')) {
+  setTimeout(() => {
+    const promo = document.getElementById('promoPopup');
+    const promoCard = document.getElementById('promoCard');
+    const closeBtn = document.getElementById('promoClose');
+    
+    if (promo) {
+      // 6 seconds baad popup show hoga
+      promo.classList.add('show');
+      
+      // Browser ko bata dete hain ki popup dikha diya hai, taaki reload par na aaye
+      sessionStorage.setItem('promoShown', 'true');
+      
+      // Popup hide karne ka function
+      const hidePopup = () => {
+        promo.classList.remove('show');
+      };
+      
+      // 3 seconds baad automatically hide ho jayega (Total 9s after page load)
+      let autoHideTimer = setTimeout(hidePopup, 3000);
+      
+      // X (Close) button par tap karne se hatega
+      closeBtn.addEventListener('click', () => {
+        hidePopup();
+        clearTimeout(autoHideTimer); // Auto timer cancel kar do
+      });
+      
+      // Agal-bagal (Background) par tap karne se hatega
+      promo.addEventListener('click', (e) => {
+        if (!promoCard.contains(e.target)) {
+          hidePopup();
+          clearTimeout(autoHideTimer);
+        }
+      });
+    }
+  }, 6000); // 6000 milliseconds = 6 seconds wait
+}
+  
 </body>
 </html>
